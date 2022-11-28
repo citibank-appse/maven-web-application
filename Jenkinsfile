@@ -14,11 +14,13 @@ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKe
 
 //Checkout Code state
 stage('CheckoutCode'){
+sendSlcaknNotifications('STARTED')
 git branch: 'development', credentialsId: '763f3572-3ee3-4058-b397-69bf9fc0b934', url: 'https://github.com/citibank-appse/maven-web-application.git'
 }
 
 //Build
 stage('Build'){
+  
 sh "${mavenHome}/bin/mvn clean package"
 }
 
