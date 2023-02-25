@@ -10,5 +10,3 @@ RUN ln -s /rajesh/apache-tomcat-9.0.71/bin/startup.sh /usr/bin/startTomcat
 RUN ln -s /rajesh/apache-tomcat-9.0.71/bin/shutdown.sh /usr/bin/stopTomcat
 CMD ["startTomcat"]
 COPY . .
-
-
