@@ -1,5 +1,5 @@
-FROM 3.6.1-alpine
-RUN  apt install java-11-openjdk-devel -y && apt install wget curl unzip -y
+FROM alpine:3.17.2
+RUN  apk add java-11-openjdk-devel -y && apk add wget curl unzip -y
 WORKDIR /rajesh
 RUN mvn clean install && mvn clean package
 RUN wget wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.zip
