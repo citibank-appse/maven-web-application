@@ -1,12 +1,7 @@
-FROM alpine:3.17.2
-RUN  apk add java-11-openjdk-devel -y && apk add wget curl unzip -y
+FROM 3.6.3-openjdk-17-slim
 WORKDIR /rajesh
-RUN mvn clean install && mvn clean package
-RUN wget wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.zip
-RUN unzip apache-tomcat-9.0.71.zip
-RUN cd /rajesh/apache-tomcat-9.0.71/bin
-RUN chmod u+x *.sh
-RUN ln -s /rajesh/apache-tomcat-9.0.71/bin/startup.sh /usr/bin/startTomcat
-RUN ln -s /rajesh/apache-tomcat-9.0.71/bin/shutdown.sh /usr/bin/stopTomcat
-CMD ["startTomcat"]
-COPY . .
+COPY ..
+RUN mvn clean install
+
+FROM tomcat:8.0.20-jre8
+COPY /rajeshtarget/maven-web-application*.war /usr/local/tomcat/webapps/maven-web-application.war
