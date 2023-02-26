@@ -1,5 +1,5 @@
 
-FROM maven:latest
+FROM 3.6.1-jdk-8-alpine
 WORKDIR /opt
 COPY . .
 RUN mvn clean install
